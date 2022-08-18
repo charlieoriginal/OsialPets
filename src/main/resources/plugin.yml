@@ -1,0 +1,11 @@
+name: OsialPets
+version: '${project.version}'
+main: net.osial.osialpets.OsialPets
+api-version: 1.13
+softdepend: [ PlaceholderAPI, ProtocolLib ]
+authors: [ Osial ]
+description: OsialPets is an armourstand pets plugin.
+website: www.osialpets.com
+commands:
+  pet:
+    aliases: [pets, osialpets]

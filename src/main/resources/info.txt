@@ -1,0 +1,6 @@
+%%__BUILTBYBIT__%%
+%%__USER__%%
+%%__USERNAME__%%
+%%__RESOURCE__%%
+%%__VERSION__%%
+%%__TIMESTAMP__%%

@@ -1,0 +1,309 @@
+##############################################################################################
+#
+#
+#
+#
+#
+#
+#                         Osial Pets by wizard-chan/Osial
+#
+#                            Current placeholder list:
+#                              %osialpets_version%
+#                               %osialpets_pet_id%
+#                              %osialpets_pet_level%
+#                            %osialpets_pet_pretty_name%
+#                           %osialpets_pet_rendered_name%
+#                            %osialpets_current_counter%
+#                           %osialpets_next_level_counter%
+#
+#
+#
+#
+##############################################################################################
+
+# All messages used in the plugin are present.
+messages:
+  given_pet: "&aYou have been given a &f%pet_id% &apet."
+  given_pet_other: "&aYou have given &f%player% &aa &f%pet_id% &apet."
+  given_pet_item: "&aYou have been given the pet item for %pet_id%."
+  set_pet: "&aYou have set your pet to &f%pet_id%."
+  set_pet_none: "&aYou have set your pet to none."
+  set_pet_other: "&aYou have set &f%player%'s &apet to &f%pet_id%&a."
+  pet_equipped: "&aYou have equipped %osialpets_pet_pretty_name%."
+  pet_unequipped: "&aYou have unequipped %osialpets_pet_pretty_name%."
+  plugin_reloaded: "&aOsialPets has been successfully reloaded."
+  offline_player: "&cThis player is not currently online."
+  no_permission: "&cYou do not have permission to run this command."
+  no_player: "&cThe player specified does not exist."
+
+level_up:
+  use_title: true
+  title: "&a&lLEVEL UP!"
+  subtitle: "&7Your active pet is now level &a%level%&7!"
+  play_sound: true
+  sound: "BLOCK_NOTE_BLOCK_HARP"
+  send_message: true
+  message: "&aYour pet is now level &a%level%&8/&a%max_level%&a!"
+
+# More configurability needs to be added to the selector GUI, working on it lol.
+pet_selector:
+  title: "&8Pet Selection..."
+  size: 54
+  pet_slots:
+    - 10
+    - 11
+  filler_slots:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+    - 9
+    - 17
+    - 18
+    - 26
+    - 27
+    - 35
+    - 36
+    - 44
+    - 45
+    - 46
+    - 47
+    - 48
+    - 49
+    - 50
+    - 51
+    - 52
+    - 53
+  # To get the specific pet's level/counters on this item. Use the following placeholders.
+  # %internal_counter%, %internal_level%, %internal_max_level%, %internal_progress_bar%, %internal_counter_progress_bar%
+  # Added by request.
+  pet_item:
+    name: "%pet_rendered_name%"
+    lore:
+      - "&7Level: &a%internal_level%&8/&a%internal_max_level%"
+      - "%internal_progress_bar%"
+      - "%internal_counter_progress_bar%"
+      - "&7Current Counter: &a%internal_counter%"
+      - ""
+      - "&7Left-Click to equip this pet."
+      - "&7Right-Click to unequip this pet."
+  items:
+    filler_item:
+      material: GRAY_STAINED_GLASS_PANE
+      name: "&7"
+      lore:
+        - "&7"
+    next_page:
+      slot: 50
+      material: ARROW
+      name: "&cNext Page &8(&e%current_page%&8/&e%max_pages%&8)"
+      lore:
+        - "&7Click to go to the next page."
+    previous_page:
+      slot: 48
+      material: ARROW
+      name: "&cPrevious Page &8(&e%current_page%&8/&e%max_pages%&8)"
+      lore:
+        - "&7Click to go to the previous page."
+    # Allows players to withdraw their pets from the menu.
+    pet_withdraw_mode:
+      # Change whether this button should appear in the GUI.
+      enabled: true
+      slot: 51
+      enable:
+        material: RED_STAINED_GLASS_PANE
+        name: "&cWithdraw Mode &8(&cDisabled&8)"
+        lore:
+          - "&7Click to &aenable &7withdraw mode."
+      disable:
+        material: GREEN_STAINED_GLASS_PANE
+        name: "&aWithdraw Mode &8(&aEnabled&8)"
+        lore:
+          - "&7Click to &cdisable &7withdraw mode."
+    change_visibility:
+      # Change whether this button should appear in the GUI.
+      enabled: true
+      slot: 47
+      enable:
+        material: RED_STAINED_GLASS_PANE
+        name: "&cHide"
+        lore:
+          - "&7Click to hide this pet."
+          - "&7This pet is currently visible."
+      disable:
+        material: GREEN_STAINED_GLASS_PANE
+        name: "&aShow"
+        lore:
+          - "&7Click to show this pet."
+          - "&7This pet is currently hidden."
+    close_gui:
+      material: BARRIER
+      slot: 49
+      name: "&cClose"
+      lore:
+        - "&7Click to close."
+
+pets:
+  # The golden_dragon is an example pet with all current configurable options.
+  golden_dragon:
+    skin: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmU5ZjliMWZjMDE0MTY2Y2I0NmEwOTNlNTM0OWIyYmY2ZWRkMjAxYjY4MGQ2MmU0OGRiZjNhZjliMDQ1OTExNiJ9fX0="
+    rendered_name: "&c%player%'s Golden Dragon &a[%level%]"
+    pretty_name: "&cGolden Dragon Pet"
+    # This is used when using the /pets giveitem [level] [player] [amount] command.
+    # Players can use these items to redeem pets by right-clicking when they're in their hand.
+    give_item:
+      material: "head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmU5ZjliMWZjMDE0MTY2Y2I0NmEwOTNlNTM0OWIyYmY2ZWRkMjAxYjY4MGQ2MmU0OGRiZjNhZjliMDQ1OTExNiJ9fX0="
+      glowing: false
+      name: "&cGolden Dragon Pet &a[%level%]"
+      lore:
+        - "&7This Golden Dragon pet was awarded to &c%player%&7."
+        - "&7Right-Click to redeem."
+    levels:
+      # The counters are RESET every time a level is reached!
+      # Keep this in mind when setting requirements.
+      1:
+        counter_requirement: 2000
+        # chance_addition is added to the base chance of procs on every roll.
+        chance_addition: 0.1
+      2:
+        counter_requirement: 4000
+        chance_addition: 0.2
+      3:
+        counter_requirement: 6000
+        chance_addition: 0.3
+      4:
+        counter_requirement: 8000
+        chance_addition: 0.4
+      5:
+        counter_requirement: 10000
+        chance_addition: 0.5
+    # Controls how much the pet will bounce up and down per/tick and the maximum bounce.
+    up_down_movement:
+      speed: 0.0025
+      max_y: 0.1
+      min_y: -0.1
+    particle:
+      offset_y: 0.47
+      count: 1
+      random_offset_x_max: 0.3
+      random_offset_y_max: 0.3
+      random_offset_z_max: 0.3
+      # Please refer to: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Particle.html
+      # When selecting particle types, they are converted to all caps upon loading so there's no need to be case sensitive.
+      # The above link is the 1.19.1 specific enum. (Or the current most modern version)
+      particle_type: "SOUL"
+
+    # Trigger conditions are things that can roll a chance at the proc_effects triggering.
+    trigger_conditions:
+      1:
+        type: EVENT
+        # Events that can be used include: PLAYER_BLOCK_BREAK, PLAYER_KILL_PLAYER, PLAYER_KILL_ENTITY, PLAYER_FISH_CATCH
+        # PLAYER_DAMAGE_BY_ENTITY, PLAYER_DAMAGE_ENTITY, PLAYER_DAMAGE_PLAYER
+        value: PLAYER_BLOCK_BREAK
+        chance: 1.0
+      2:
+        type: EVENT
+        value: PLAYER_KILL_PLAYER
+        chance: 1.0
+      3:
+        type: EVENT
+        value: PLAYER_KILL_ENTITY
+        chance: 1.0
+      4:
+        type: EVENT
+        value: PLAYER_FISH_CATCH
+        chance: 1.0
+      5:
+        type: EVENT
+        value: PLAYER_DAMAGE_BY_ENTITY
+        chance: 1.0
+      6:
+        type: EVENT
+        value: PLAYER_DAMAGE_ENTITY
+        chance: 1.0
+      7:
+        type: EVENT
+        value: PLAYER_DAMAGE_PLAYER
+        chance: 1.0
+
+    # Proc Effects are actions that are taken when the trigger conditions are met & rolled on chance.
+    # Currently, all proc effects are triggered upon rolling a trigger condition. This may change in the future.
+
+    # Enable to guarantee at least one proc effect when the pet is successfully triggered.
+    guarantee_at_least_one: true
+    proc_effects:
+      1:
+        # Types which can be used include: CONSOLE_COMMAND, PLAYER_COMMAND, REMOVE_POTION_EFFECTS, ADD_POTION_EFFECT
+        # When using REMOVE_POTION_EFFECTS, specify "ALL" or "POTION_EFFECT_1;POTION_EFFECT_2;etc"
+        # When using ADD_POTION_EFFECT, specify "POTION_EFFECT_1:{LEVEL-1}:{DURATION};POTION_EFFECT_2:{LEVEL-1}:{DURATION};etc" i.e. Haste 1 is FAST_DIGGING:0:30
+        type: CONSOLE_COMMAND
+        value: "give %player% diamond 1"
+        # This chance is rolled AFTER the trigger conditions are met.
+        chance: 0.1
+      2:
+        type: MESSAGE
+        value: "&aYour %pet_id% has been procced!"
+        chance: 0.1
+      3:
+        type: ADD_POTION_EFFECT
+        value: "ABSORPTION:1:1000;DAMAGE_RESISTANCE:1:1000"
+        chance: 0.1
+      4:
+        type: REMOVE_POTION_EFFECTS
+        value: "BLINDNESS;CONFUSION"
+        chance: 0.1
+
+  armadillo:
+    skin: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzFlYjZkZjQ3MzZhZTI0ZGQxMmEzZDAwZjkxZTZlM2FhN2FkZTZiYmVmYjA5NzhhZmVmMmYwZjkyNDYxMDE4ZiJ9fX0="
+    rendered_name: "&c%player%'s Armadillo &a[%level%]"
+    pretty_name: "&cArmadillo Pet"
+    give_item:
+      material: "head-eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzFlYjZkZjQ3MzZhZTI0ZGQxMmEzZDAwZjkxZTZlM2FhN2FkZTZiYmVmYjA5NzhhZmVmMmYwZjkyNDYxMDE4ZiJ9fX0="
+      glowing: false
+      name: "&cArmadillo Pet &a[%level%]"
+      lore:
+        - "&7This Armadillo pet was awarded to &c%player%&7."
+        - "&7Right-Click to redeem."
+    levels:
+      1:
+        counter_requirement: 2000
+        chance_addition: 0.1
+      2:
+        counter_requirement: 4000
+        chance_addition: 0.2
+      3:
+        counter_requirement: 6000
+        chance_addition: 0.3
+      4:
+        counter_requirement: 8000
+        chance_addition: 0.4
+      5:
+        counter_requirement: 10000
+        chance_addition: 0.5
+    up_down_movement:
+      speed: 0.0025
+      max_y: 0.1
+      min_y: -0.1
+    particle:
+      offset_y: 0.47
+      count: 1
+      random_offset_x_max: 0.3
+      random_offset_y_max: 0.3
+      random_offset_z_max: 0.3
+      particle_type: "SOUL"
+    trigger_conditions:
+      1:
+        type: EVENT
+        value: PLAYER_BLOCK_BREAK
+        chance: 1.0
+    guarantee_at_least_one: true
+    proc_effects:
+      1:
+        type: CONSOLE_COMMAND
+        value: "give %player% stone 32"
+        chance: 0.1
